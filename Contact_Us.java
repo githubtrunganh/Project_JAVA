@@ -4,6 +4,12 @@
  */
 package trunganh_java;
 
+import java.io.FileNotFoundException;
+import javax.swing.JOptionPane;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Admin
@@ -162,11 +168,53 @@ public class Contact_Us extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
+        
+        String name = jTextField1.getText();
+        String mail = jTextField2.getText();
+        String SDT = jTextField3.getText();
+        String address = jTextField4.getText();
+        String content = jTextField5.getText();
+        
+        if(name.equals("")) {
+            JOptionPane.showMessageDialog(this, "Ban can nhap ho va ten");
+            jTextField1.requestFocus();
+            return;
+        }
+        if(mail.equals("")) {
+            JOptionPane.showMessageDialog(this, "Ban can nhap email");
+            jTextField2.requestFocus();
+            return;
+        }else
+        if(SDT.equals("")) {
+            JOptionPane.showMessageDialog(this, "Ban can nhap so dien thoai");
+            jTextField3.requestFocus();
+            return;
+        }else
+        if(address.equals("")) {
+            JOptionPane.showMessageDialog(this, "Ban can nhap dia chi");
+            jTextField4.requestFocus();
+            return;
+        }
+        if(content.equals("")) {
+            JOptionPane.showMessageDialog(this, "Ban Contact ma khong co noi dung a ??");
+            jTextField5.requestFocus();
+            return;
+        }
+          String data = name + "\t" + mail + "\t" + SDT + "\t" + address + "\t" + content;
+          
+          
+          FileOutputStream output;
+        try {
+            output = new FileOutputStream("src\\dulieu.txt");
+            output.write(data.getBytes());
+            output.close();
+            JOptionPane.showMessageDialog(this,"Ghi file thanh cong");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Contact_Us.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Contact_Us.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
