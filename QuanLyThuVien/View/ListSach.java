@@ -15,15 +15,16 @@ import service.Service;
  *
  * @author Admin
  */
-public class ListBao extends javax.swing.JFrame {
+public class ListSach extends javax.swing.JFrame {
     Service service;
     DefaultTableModel defaultTableModel;
     /**
-     * Creates new form ListBao
+     * Creates new form ListSach
      */
-    public ListBao() {
+    public ListSach() {
         service = new Service();
         initComponents();
+        
         
         ///Tranh nguoi dung sua du lieu
         defaultTableModel = new DefaultTableModel(){
@@ -33,17 +34,18 @@ public class ListBao extends javax.swing.JFrame {
             }
         };
         
-        TableBao.setModel(defaultTableModel);
+        TableSach.setModel(defaultTableModel);
         
-        defaultTableModel.addColumn("MaBao");
-        defaultTableModel.addColumn("TenBao");
-        defaultTableModel.addColumn("TenNXBBao");
+        defaultTableModel.addColumn("MaSach");
+        defaultTableModel.addColumn("TenSach");
+        defaultTableModel.addColumn("TenTacGia");
+        defaultTableModel.addColumn("TenNXB");
         defaultTableModel.addColumn("SoBPH");
-        defaultTableModel.addColumn("NgayPH");
+        defaultTableModel.addColumn("SoTrang");
         
-        List<Bao> bao = service.getALLBao();
-        for(Bao baos : bao){
-            defaultTableModel.addRow(new Object[]{baos.getMaBao(),baos.getTenB(),baos.getNXB(),baos.getSoBPH(),baos.getNgayPHB() });
+        List<Sach> sach = service.getALLSACH();
+        for(Sach sachs : sach){
+            defaultTableModel.addRow(new Object[]{sachs.getMaSach(), sachs.getTenSach(),sachs.getTenTGS(),sachs.gettenNXBS(),sachs.getsoBPHS(),sachs.getsoTrangS()});
         }
     }
 
@@ -56,36 +58,22 @@ public class ListBao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BtnXoaBao = new javax.swing.JButton();
-        BtnRefresh = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TableBao = new javax.swing.JTable();
-        BtnThemBao = new javax.swing.JButton();
-        BtnSuaBao = new javax.swing.JButton();
-        BtnBackBao = new javax.swing.JButton();
+        TableSach = new javax.swing.JTable();
+        BtnThemSach = new javax.swing.JButton();
+        BtnSuaSach = new javax.swing.JButton();
+        BtnXoaSach = new javax.swing.JButton();
+        BtnRefresh = new javax.swing.JButton();
+        BtnBackSach = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        BtnXoaBao.setText("Xóa");
-        BtnXoaBao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnXoaBaoActionPerformed(evt);
-            }
-        });
-
-        BtnRefresh.setText("Refresh");
-        BtnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRefreshActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("UTM Akashi", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Quản lý báo");
+        jLabel1.setText("Quản lý sách");
 
-        TableBao.setModel(new javax.swing.table.DefaultTableModel(
+        TableSach.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -96,21 +84,35 @@ public class ListBao extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(TableBao);
+        jScrollPane1.setViewportView(TableSach);
 
-        BtnThemBao.setText("Thêm");
-        BtnThemBao.addActionListener(new java.awt.event.ActionListener() {
+        BtnThemSach.setText("Thêm");
+        BtnThemSach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnThemBaoActionPerformed(evt);
+                BtnThemSachActionPerformed(evt);
             }
         });
 
-        BtnSuaBao.setText("Sửa");
+        BtnSuaSach.setText("Sửa");
 
-        BtnBackBao.setText("Quay lại");
-        BtnBackBao.addActionListener(new java.awt.event.ActionListener() {
+        BtnXoaSach.setText("Xóa");
+        BtnXoaSach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBackBaoActionPerformed(evt);
+                BtnXoaSachActionPerformed(evt);
+            }
+        });
+
+        BtnRefresh.setText("Refresh");
+        BtnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRefreshActionPerformed(evt);
+            }
+        });
+
+        BtnBackSach.setText("Quay lại");
+        BtnBackSach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBackSachActionPerformed(evt);
             }
         });
 
@@ -121,19 +123,19 @@ public class ListBao extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(185, 185, 185)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(220, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(BtnThemBao, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtnThemSach, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(BtnSuaBao, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtnSuaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(BtnXoaBao, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtnXoaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtnBackBao, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtnBackSach, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BtnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -147,70 +149,71 @@ public class ListBao extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnThemBao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnSuaBao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnXoaBao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnThemSach, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnSuaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnXoaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnBackBao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(45, Short.MAX_VALUE))
+                    .addComponent(BtnBackSach, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnBackBaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBackBaoActionPerformed
+    private void BtnBackSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBackSachActionPerformed
         // TODO add your handling code here:
         new TuyChon().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_BtnBackBaoActionPerformed
+    }//GEN-LAST:event_BtnBackSachActionPerformed
 
     private void BtnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRefreshActionPerformed
         // TODO add your handling code here:
         defaultTableModel.setRowCount(0);
-        List<Bao> bao = service.getALLBao();
-        for(Bao baos : bao){
-            defaultTableModel.addRow(new Object[]{baos.getMaBao(),baos.getTenB(),baos.getNXB(),baos.getSoBPH(),baos.getNgayPHB() });
+        List<Sach> sach = service.getALLSACH();
+        for(Sach sachs : sach){
+            defaultTableModel.addRow(new Object[]{sachs.getMaSach(), sachs.getTenSach(),sachs.getTenTGS(),sachs.gettenNXBS(),sachs.getsoBPHS(),sachs.getsoTrangS()});
         }
     }//GEN-LAST:event_BtnRefreshActionPerformed
 
-    private void BtnThemBaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnThemBaoActionPerformed
+    private void BtnThemSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnThemSachActionPerformed
         // TODO add your handling code here:
-        new ThemBao().setVisible(true);
+        new ThemSach().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_BtnThemBaoActionPerformed
+    }//GEN-LAST:event_BtnThemSachActionPerformed
 
-    private void BtnXoaBaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnXoaBaoActionPerformed
+    private void BtnXoaSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnXoaSachActionPerformed
         // TODO add your handling code here:
-        int row = TableBao.getSelectedRow();
+        int row = TableSach.getSelectedRow();
         if(row == -1) {
-            JOptionPane.showMessageDialog(ListBao.this, "Vui long chon hoc sinh truoc", "loi",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(ListSach.this, "Vui long chon hoc sinh truoc", "loi",JOptionPane.ERROR_MESSAGE);
         }else{
-            int confirm = JOptionPane.showConfirmDialog(ListBao.this,"Ban chac chan muon xoa khong");
+            int confirm = JOptionPane.showConfirmDialog(ListSach.this,"Ban chac chan muon xoa khong");
             
             if(confirm == JOptionPane.YES_OPTION){
-                int MaBao = Integer.valueOf(String.valueOf(TableBao.getValueAt(row, 0)));
+                String MaSach = String.valueOf(TableSach.getValueAt(row, 0));
                 
-                service.deleteBao(MaBao);
+                service.deleteSach(MaSach);
             
                 
              /// Xoa xong rooif refresh
             defaultTableModel.setRowCount(0);
-            List<Bao> bao = service.getALLBao();
-            for(Bao baos : bao){
-            defaultTableModel.addRow(new Object[]{baos.getMaBao(),baos.getTenB(),baos.getNXB(),baos.getSoBPH(),baos.getNgayPHB() });
+            List<Sach> sach = service.getALLSACH();
+            for(Sach sachs : sach){
+            defaultTableModel.addRow(new Object[]{sachs.getMaSach(), sachs.getTenSach(),sachs.getTenTGS(),sachs.gettenNXBS(),sachs.getsoBPHS(),sachs.getsoTrangS()});
         }
             }
         }
-    }//GEN-LAST:event_BtnXoaBaoActionPerformed
+    }//GEN-LAST:event_BtnXoaSachActionPerformed
 
   
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnBackBao;
+    private javax.swing.JButton BtnBackSach;
     private javax.swing.JButton BtnRefresh;
-    private javax.swing.JButton BtnSuaBao;
-    private javax.swing.JButton BtnThemBao;
-    private javax.swing.JButton BtnXoaBao;
-    private javax.swing.JTable TableBao;
+    private javax.swing.JButton BtnSuaSach;
+    private javax.swing.JButton BtnThemSach;
+    private javax.swing.JButton BtnXoaSach;
+    private javax.swing.JTable TableSach;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

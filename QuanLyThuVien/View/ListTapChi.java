@@ -8,20 +8,21 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Bao;
-import model.Sach;
+import model.thuVien;
 import service.Service;
 
 /**
  *
  * @author Admin
  */
-public class ListBao extends javax.swing.JFrame {
+public class ListTapChi extends javax.swing.JFrame {
     Service service;
     DefaultTableModel defaultTableModel;
+
     /**
-     * Creates new form ListBao
+     * Creates new form ListTapChi
      */
-    public ListBao() {
+    public ListTapChi() {
         service = new Service();
         initComponents();
         
@@ -33,17 +34,18 @@ public class ListBao extends javax.swing.JFrame {
             }
         };
         
-        TableBao.setModel(defaultTableModel);
+        TableTapChi.setModel(defaultTableModel);
         
-        defaultTableModel.addColumn("MaBao");
-        defaultTableModel.addColumn("TenBao");
-        defaultTableModel.addColumn("TenNXBBao");
+        defaultTableModel.addColumn("MaTC");
+        defaultTableModel.addColumn("TenTC");
+        defaultTableModel.addColumn("TenNXB");
         defaultTableModel.addColumn("SoBPH");
-        defaultTableModel.addColumn("NgayPH");
+        defaultTableModel.addColumn("SoPH");
+        defaultTableModel.addColumn("ThangPH");
         
-        List<Bao> bao = service.getALLBao();
-        for(Bao baos : bao){
-            defaultTableModel.addRow(new Object[]{baos.getMaBao(),baos.getTenB(),baos.getNXB(),baos.getSoBPH(),baos.getNgayPHB() });
+        List<thuVien> tapchi = service.getALLTapChi();
+        for(thuVien Tapchis : tapchi){
+            defaultTableModel.addRow(new Object[]{Tapchis.getMaTC(), Tapchis.getTenTC(),Tapchis.gettenNXBTC(), Tapchis.getSoBPHTC(),Tapchis.getSoPHTC(),Tapchis.getThangPHTC()});
         }
     }
 
@@ -56,21 +58,21 @@ public class ListBao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BtnXoaBao = new javax.swing.JButton();
+        BtnXoaTapChi = new javax.swing.JButton();
         BtnRefresh = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TableBao = new javax.swing.JTable();
-        BtnThemBao = new javax.swing.JButton();
-        BtnSuaBao = new javax.swing.JButton();
-        BtnBackBao = new javax.swing.JButton();
+        TableTapChi = new javax.swing.JTable();
+        BtnThemTapChi = new javax.swing.JButton();
+        BtnSuaTapChi = new javax.swing.JButton();
+        BtnBackTapChi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        BtnXoaBao.setText("Xóa");
-        BtnXoaBao.addActionListener(new java.awt.event.ActionListener() {
+        BtnXoaTapChi.setText("Xóa");
+        BtnXoaTapChi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnXoaBaoActionPerformed(evt);
+                BtnXoaTapChiActionPerformed(evt);
             }
         });
 
@@ -83,9 +85,9 @@ public class ListBao extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("UTM Akashi", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Quản lý báo");
+        jLabel1.setText("Quản lý tạp chí");
 
-        TableBao.setModel(new javax.swing.table.DefaultTableModel(
+        TableTapChi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -96,21 +98,21 @@ public class ListBao extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(TableBao);
+        jScrollPane1.setViewportView(TableTapChi);
 
-        BtnThemBao.setText("Thêm");
-        BtnThemBao.addActionListener(new java.awt.event.ActionListener() {
+        BtnThemTapChi.setText("Thêm");
+        BtnThemTapChi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnThemBaoActionPerformed(evt);
+                BtnThemTapChiActionPerformed(evt);
             }
         });
 
-        BtnSuaBao.setText("Sửa");
+        BtnSuaTapChi.setText("Sửa");
 
-        BtnBackBao.setText("Quay lại");
-        BtnBackBao.addActionListener(new java.awt.event.ActionListener() {
+        BtnBackTapChi.setText("Quay lại");
+        BtnBackTapChi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBackBaoActionPerformed(evt);
+                BtnBackTapChiActionPerformed(evt);
             }
         });
 
@@ -121,20 +123,20 @@ public class ListBao extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(185, 185, 185)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(220, Short.MAX_VALUE))
+                .addContainerGap(207, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(BtnThemBao, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtnThemTapChi, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(BtnSuaBao, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtnSuaTapChi, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(BtnXoaBao, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtnXoaTapChi, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtnBackBao, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BtnBackTapChi, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BtnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -147,70 +149,74 @@ public class ListBao extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnThemBao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnSuaBao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnXoaBao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnThemTapChi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnSuaTapChi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnXoaTapChi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnBackBao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(45, Short.MAX_VALUE))
+                    .addComponent(BtnBackTapChi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnBackBaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBackBaoActionPerformed
+    private void BtnBackTapChiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBackTapChiActionPerformed
         // TODO add your handling code here:
         new TuyChon().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_BtnBackBaoActionPerformed
+    }//GEN-LAST:event_BtnBackTapChiActionPerformed
 
     private void BtnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRefreshActionPerformed
         // TODO add your handling code here:
         defaultTableModel.setRowCount(0);
-        List<Bao> bao = service.getALLBao();
-        for(Bao baos : bao){
-            defaultTableModel.addRow(new Object[]{baos.getMaBao(),baos.getTenB(),baos.getNXB(),baos.getSoBPH(),baos.getNgayPHB() });
+        List<thuVien> tapchi = service.getALLTapChi();
+        for(thuVien Tapchis : tapchi){
+            defaultTableModel.addRow(new Object[]{Tapchis.getMaTC(), Tapchis.getTenTC(),Tapchis.gettenNXBTC(), Tapchis.getSoBPHTC(),Tapchis.getSoPHTC(),Tapchis.getThangPHTC()});
         }
+        
     }//GEN-LAST:event_BtnRefreshActionPerformed
 
-    private void BtnThemBaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnThemBaoActionPerformed
+    private void BtnThemTapChiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnThemTapChiActionPerformed
         // TODO add your handling code here:
-        new ThemBao().setVisible(true);
+        new ThemTapchi().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_BtnThemBaoActionPerformed
+    }//GEN-LAST:event_BtnThemTapChiActionPerformed
 
-    private void BtnXoaBaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnXoaBaoActionPerformed
+    private void BtnXoaTapChiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnXoaTapChiActionPerformed
         // TODO add your handling code here:
-        int row = TableBao.getSelectedRow();
+        int row = TableTapChi.getSelectedRow();
         if(row == -1) {
-            JOptionPane.showMessageDialog(ListBao.this, "Vui long chon hoc sinh truoc", "loi",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(ListTapChi.this, "Vui long chon hoc sinh truoc", "loi",JOptionPane.ERROR_MESSAGE);
         }else{
-            int confirm = JOptionPane.showConfirmDialog(ListBao.this,"Ban chac chan muon xoa khong");
+            int confirm = JOptionPane.showConfirmDialog(ListTapChi.this,"Ban chac chan muon xoa khong");
             
             if(confirm == JOptionPane.YES_OPTION){
-                int MaBao = Integer.valueOf(String.valueOf(TableBao.getValueAt(row, 0)));
+                int MaTC = Integer.valueOf(String.valueOf(TableTapChi.getValueAt(row, 0)));
                 
-                service.deleteBao(MaBao);
+                service.deleteTapChi(MaTC);
             
                 
              /// Xoa xong rooif refresh
             defaultTableModel.setRowCount(0);
-            List<Bao> bao = service.getALLBao();
-            for(Bao baos : bao){
-            defaultTableModel.addRow(new Object[]{baos.getMaBao(),baos.getTenB(),baos.getNXB(),baos.getSoBPH(),baos.getNgayPHB() });
+            List<thuVien> tapchi = service.getALLTapChi();
+            for(thuVien Tapchis : tapchi){
+            defaultTableModel.addRow(new Object[]{Tapchis.getMaTC(), Tapchis.getTenTC(),Tapchis.gettenNXBTC(), Tapchis.getSoBPHTC(),Tapchis.getSoPHTC(),Tapchis.getThangPHTC()});
         }
             }
         }
-    }//GEN-LAST:event_BtnXoaBaoActionPerformed
+    }//GEN-LAST:event_BtnXoaTapChiActionPerformed
 
-  
+    /**
+     * @param args the command line arguments
+     */
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnBackBao;
+    private javax.swing.JButton BtnBackTapChi;
     private javax.swing.JButton BtnRefresh;
-    private javax.swing.JButton BtnSuaBao;
-    private javax.swing.JButton BtnThemBao;
-    private javax.swing.JButton BtnXoaBao;
-    private javax.swing.JTable TableBao;
+    private javax.swing.JButton BtnSuaTapChi;
+    private javax.swing.JButton BtnThemTapChi;
+    private javax.swing.JButton BtnXoaTapChi;
+    private javax.swing.JTable TableTapChi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
